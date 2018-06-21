@@ -10,6 +10,7 @@ namespace binarysearchtree
     {
         //member variables
         private Node root;
+        
 
         //constructor
         public BinarySearchTree()
@@ -42,6 +43,11 @@ namespace binarysearchtree
             Display(node.leftChild, level + 1);
         }
         //Pre-Order traversal
+        public void PreOrder()
+        {
+            PreOrder(root);
+            Console.WriteLine();
+        }
         public void PreOrder(Node node)
         {
             if(node == null)
@@ -68,7 +74,7 @@ namespace binarysearchtree
             Console.Write(node.data + " ");
             InOrder(node.rightChild);
         }
-        //Post-oredr traversal
+        //Post-order traversal
         public void PostOrder()
         {
             PostOrder(root);
@@ -144,7 +150,56 @@ namespace binarysearchtree
             root.rightChild.leftChild = new Node('X');
         }
 
-        
+        public void AddToTree(int addedValue, Node currentNode = null)
+        {
+            // Node currentNode = new Node(addedValue);
+
+            if (root == null)
+            {
+                root = new Node(addedValue);
+                return;
+                //root.data = addedValue;
+
+            }
+            if (currentNode == null)
+            {
+                currentNode = root;
+            }
+            if (currentNode.data == addedValue)
+            {
+                return;
+            }
+            
+            //if smaller, add left
+            else if (addedValue < currentNode.data)
+            {
+                if (currentNode.leftChild == null)
+                {
+                    currentNode.leftChild = new Node(addedValue);
+                }
+                else
+                {
+                    AddToTree(addedValue, currentNode.leftChild);
+                }
+            }
+            //if larger, add right
+            else if (addedValue > currentNode.data)
+            {
+                if (currentNode.rightChild == null)
+                {
+                    currentNode.rightChild = new Node(addedValue);
+                }
+                else
+                {
+                    AddToTree(addedValue, currentNode.rightChild);
+                }
+
+            }
+        }
+        public void Search()
+        {
+
+        }
         
     }
 }

@@ -11,6 +11,7 @@ namespace binarysearchtree
         public Node leftChild;
         public int data;
         public Node rightChild;
+       // public int value;
 
         public Node(int data)
         {
@@ -18,5 +19,10 @@ namespace binarysearchtree
             leftChild = null;
             rightChild = null;
         }
+
+        //public int AddTwoNumbers(int numberOne, int numberTwo = 0)
+        //{
+        //    return numberOne + numberTwo;
+        //}
     }
 }
